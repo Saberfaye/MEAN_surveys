@@ -1,0 +1,47 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand">Welcome to Survey Polls! {{ user.name }}</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/dashboard"><span class="glyphicon glyphicon-list-alt"></span> Dashboard</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="well">
+	<h3>{{ poll._user.name }} asked:</h3>
+	<h2>{{ poll.content }}</h2>
+	<p>Click the Vote button to choose one</p>
+	<table class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Current Count of Votes</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>{{ poll.option1 }}</td>
+				<td>{{ poll.vote.option1 }}</td>
+				<td><a class="btn btn-info" ng-click="vote('option1')">Vote</a></td>
+			</tr>
+			<tr>
+				<td>{{ poll.option2 }}</td>
+				<td>{{ poll.vote.option2 }}</td>
+				<td><a class="btn btn-info" ng-click="vote('option2')">Vote</a></td>
+			</tr>
+			<tr>
+				<td>{{ poll.option3 }}</td>
+				<td>{{ poll.vote.option3 }}</td>
+				<td><a class="btn btn-info" ng-click="vote('option3')">Vote</a></td>
+			</tr>
+			<tr>
+				<td>{{ poll.option4 }}</td>
+				<td>{{ poll.vote.option4 }}</td>
+				<td><a class="btn btn-info" ng-click="vote('option4')">Vote</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

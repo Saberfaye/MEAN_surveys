@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand">Welcome to Survey Polls! {{ user.name }}</a>
+		</div>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="/create"><span class="glyphicon glyphicon-pencil"></span> Create a New Poll</a></li>
+			<li ng-click="logout()"><a href=""><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="well">
+	<div class="col-sm-3 pull-right" style="margin-bottom: 20px;">
+		<input type="text" class="form-control" placeholder="Search" ng-model="search.content">
+	</div>
+	<table class="table table-hover table-bordered table-striped">
+		<thead>
+			<tr>
+				<th ng-click="sortBy('_user.name')">Name</th>
+				<th ng-click="sortBy('content')">Survey Question</th>
+				<th ng-click="sortBy('createdAt')">Date Posted</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="poll in polls | filter:search | orderBy:propertyName:reverse">
+				<td>{{ poll._user.name }}</td>
+				<td><a href="/polls/{{poll._id}}" class="btn btn-info">{{ poll.content }}</a></td>
+				<td>{{ poll.createdAt | date:"MMMM dd yyyy" }}</td>
+				<td><a href="" class="btn btn-info" ng-if="user._id == poll._user._id" ng-click="deletePoll(poll._id)">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
